@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+    <label for="i1">Total Amount</label>
+    <input type="text" id="i1">
+    <br>
+    <label for="i2">Room Rent</label>
+    <input type="text" id="i2">
+    <br>
+    <label for="i3">Accessories</label>
+    <input type="text" id="i3">
+    <br>
+    <label for="i4">Emergency</label>
+    <input type="text" id="i4">
+    <br>
+    <label for="i5">Saving</label>
+    <input type="text" id="i5">
+
+    <button id="evaluate">Evaluate</button>
+
+    <div id="result">
+        <p>Room Rent: <span id="r1"></span></p>
+        <p>Accessories Rent: <span id="r2"></span></p>
+        <p>Emergency Rent: <span id="r3"></span></p>
+        <p>Savings Rent: <span id="r4"></span></p>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            $("#evaluate").click(function(){
+                var totalAmount = $("#i1").val();
+                var roomRent = $("#i2").val();
+                var accessories = $("#i3").val();
+                var emergency = $("#i4").val();
+                var saving = $("#i5").val();
+
+                if(totalAmount && roomRent && accessories && emergency && saving){
+                    var res1 = totalAmount * (roomRent / 100);
+                    var res2 = totalAmount * (accessories / 100);
+                    var res3 = totalAmount * (emergency / 100);
+                    var res4 = totalAmount * (saving / 100);
+
+                    $("#r1").text(res1);
+                    $("#r2").text(res2);
+                    $("#r3").text(res3);
+                    $("#r4").text(res4);
+                } else {
+                    alert("Please enter all values.");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

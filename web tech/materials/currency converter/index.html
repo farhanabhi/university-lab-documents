@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="header">
+        Simple Currency Converter
+    </header>
+    <div class="container">
+        <p class="title">Exchange Rate</p>
+        <h2 id="answer"></h2>
+        <label for="amount" class="amount">Amount</label>
+        <input type="number" id="amount" name="amount">
+        <div class="ft">
+            <label for="fromCurrency" id="fromLabel">From</label>
+            <label for="toCurrency" id="toLabel">To</label>
+        </div>
+
+        <div class="fromto">
+            <div class="from">
+                <img src="ind.jpg" alt="Flag" class="flag" id="fromFlag">
+                <select name="fromCurrency" id="fromCurrency" onchange="updateFlag('from')">
+                    <option value="INR">INR</option>
+                    <option value="USD">USD</option>
+                    <option value="CAD">CAD</option>
+                    <option value="EUR">EUR</option>
+                </select>
+            </div>
+            <div class="swap" onclick="swapCurrencies()">
+                <i class="fa fa-exchange"></i>
+            </div>
+            <div class="to">
+                <img src="usa.jpg" alt="Flag" class="flag" id="toFlag">
+                <select name="toCurrency" id="toCurrency" onchange="updateFlag('to')">
+                    <option value="USD">USD</option>
+                    <option value="INR">INR</option>
+                    <option value="CAD">CAD</option>
+                    <option value="EUR">EUR</option>
+                </select>
+            </div>
+        </div>
+        <button class="button" onclick="convertCurrency()">Convert</button>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        function convertCurrency() {
+            var rates = {
+                "USD": { "INR": 83, "EUR": 0.85, "CAD": 1.25 },
+                "INR": { "USD": 0.012, "EUR": 0.011, "CAD": 0.017 },
+                "EUR": { "USD": 1.18, "INR": 88.6, "CAD": 1.47 },
+                "CAD": { "USD": 0.80, "INR": 60.2, "EUR": 0.68 }
+            };
+            var amount = parseFloat(document.getElementById('amount').value);
+            var fromCurrency = document.getElementById('fromCurrency').value;
+            var toCurrency = document.getElementById('toCurrency').value;
+            var result = document.getElementById('answer');
+
+            var convertedAmount = amount * rates[fromCurrency][toCurrency];
+            result.innerHTML = amount + " " + fromCurrency + " = " + convertedAmount.toFixed(2) + " " + toCurrency;
+
+        }
+
+        function swapCurrencies() {
+            var fromCurrencySelect = document.getElementById('fromCurrency');
+            var toCurrencySelect = document.getElementById('toCurrency');
+            var tempValue = fromCurrencySelect.value;
+            var tempText = fromCurrencySelect.options[fromCurrencySelect.selectedIndex].text;
+            fromCurrencySelect.value = toCurrencySelect.value;
+            fromCurrencySelect.options[fromCurrencySelect.selectedIndex].text = toCurrencySelect.options[toCurrencySelect.selectedIndex].text;
+            toCurrencySelect.value = tempValue;
+            toCurrencySelect.options[toCurrencySelect.selectedIndex].text = tempText;
+
+            var fromCurrencyCode = fromCurrencySelect.value;
+            var toCurrencyCode = toCurrencySelect.value;
+            document.getElementById('fromFlag').src = getFlagImageURL(fromCurrencyCode);
+            document.getElementById('toFlag').src = getFlagImageURL(toCurrencyCode);
+
+        }
+
+        function updateFlag(type) {
+            var currencyCode;
+            if (type === 'from') {
+                currencyCode = document.getElementById('fromCurrency').value;
+                document.getElementById('fromFlag').src = getFlagImageURL(currencyCode);
+            } else if (type === 'to') {
+                currencyCode = document.getElementById('toCurrency').value;
+                document.getElementById('toFlag').src = getFlagImageURL(currencyCode);
+            }
+        }
+
+        function getFlagImageURL(currencyCode) {
+            var flagURLs = {
+                "INR": "ind.jpg",
+                "USD": "usa.jpg",
+                "CAD": "cad.jpg",
+                "EUR": "eur.jpg"
+            };
+            return flagURLs[currencyCode];
+        }
+
+
+    </script>
+</body>
+
+</html>

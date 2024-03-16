@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html ng-app="personalWebsiteApp">
+
+<head>
+  <title>Routing</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
+  <script>
+    var app = angular.module("personalWebsiteApp", ["ngRoute"]);
+
+    app.config(function($routeProvider) {
+      $routeProvider
+        .when("/personal-details", {
+          templateUrl: "9-2p.html"
+        })
+        .when("/academic-details", {
+          templateUrl: "academic-details.html"
+        })
+    
+        .when("/login", {
+          templateUrl: "9login.html"
+        })
+        .when("/signup", {
+          templateUrl: "9signup.html"
+        })
+        .otherwise({
+          redirectTo: "/personal-details"
+        });
+    });
+  </script>
+  <style>
+    body {
+      background-color: #f3f3f3;
+      color: #333;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      color: #333;
+      text-align: left;
+      padding: 20px;
+      margin: 0;
+    }
+
+    nav {
+      background-color: #2196f3;
+      padding: 10px;
+      width: 40%;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav li {
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      padding: 20px;
+    }
+
+    a {
+      padding: 20px;
+    }
+
+    .content {
+      background-color: #fff;
+      padding: 20px;
+      margin: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>My Personal Website</h1>
+
+  <nav>
+    <ul>
+      <li><a href="#!personal-details">Personal Details</a></li>
+      <br>
+      <br>
+      <li><a href="#!academic-details">Academic Details</a></li>
+      <br>
+      <br>
+      <li><a href="#!login">Login Page</a></li>
+      <br>
+      <br>
+      <li><a href="#!signup">Sign Up Page</a></li>
+    </ul>
+  </nav>
+
+  <div ng-view></div>
+</body>
+
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ex No 2 : Forms</title>
+    </head>
+
+    <body>
+        <h2><center>Stark industries</center></h2>
+        
+        <hr>
+        
+        <table width="100%">
+            <tr>
+            <td><center><a href="2b.html" target="_blank">Media Elements</center></a></td>
+            <td><center><a href="2a.html">Application Form</center></a></td>
+            </tr>
+        </table>
+       
+        <hr>
+        <h3 id="c2"><center>Job Application</center></h3>
+        <hr>
+
+        <form>
+            <table width="100%">
+                <tr>
+		    <td rowspan="14" style="width: 35%;">  </td>
+                    <td style="width: 15%;"><label for="name">Name</label></td>
+                    <td style="width: 50%;"><input type="text" id="name" value="Farhan m hameed"><br></td>
+                </tr>
+
+                <tr>
+                    <td><label for="aplno">Application Number</label></td>
+                    <td><input type="text" id="aplno" value="URK22AI1085"><br></td>
+                </tr>
+
+                <tr>
+                    <td><label for="pass">Password</label></td>
+                    <td><input type="password" id="pass"><br></td>
+                </tr>
+
+                <tr>
+                    <td><label for="dob">Date Of Birth</label></td>
+                    <td><input type="date" id="dob"><br></td>
+                </tr>
+
+                <tr>
+                    <td><label for="age">Age</label></td>
+                    <td><input type="text" id="age" value="20"><br></td>
+                </tr>
+
+                <tr>
+                    <td><label for="no">Phone Number</label></td>
+                    <td><input type="text" id="no" value="9430033221"><br></td>
+                </tr>
+
+                <tr>
+                    <td><label for="email">Email ID</label></td>
+                    <td><input type="text" id="email" value="farhanm@karunya.edu.in"><br></td>
+                </tr>
+
+                <tr>
+                    <td><label for="gender">Gender</label></td>
+                    <td>
+                        <input type="radio" id="male" name="gender" value="Male">
+                        <label for="male">Male</label>
+                        <input type="radio" id="female" name="gender" value="Female">
+                        <label for="female">Female</label>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td><label for="add">Address</label></td>
+                    <td><textarea name="add" id="add" cols="20" rows="10"></textarea></td>
+                </tr>
+
+                <tr>
+                    <td><label for="lan">Languages Known</label></td>
+                    <td>
+                        <input type="checkbox" id="eng" name="eng" value="English">
+                        <label for="eng"> English</label>
+                        <input type="checkbox" id="mal" name="mal" value="Malayalam">
+                        <label for="mal"> Malayalam</label>
+                        <input type="checkbox" id="tam" name="tam" value="Tamil">
+                        <label for="tam"> Tamil</label>
+                        <input type="checkbox" id="tel" name="tel" value="Telungu">
+                        <label for="tel"> Telungu</label>
+                        <input type="checkbox" id="hin" name="hin" value="Hindi">
+                        <label for="hin"> Hindi</label>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><label for="course">Select your course:</label></td>
+                    <td>
+                        <select name="course" id="course">
+                          <option value="cse">B.Tech Computer Science Engineering</option>
+                          <option value="eee">B.Tech Electrical and Electronics Engineering</option>
+                          <option value="ece">B.Tech Electronics and Communication Engineering</option>
+                          <option value="civil">B.Tech Civil Engineering</option>
+                        </select>
+                        </textarea></td>
+                </tr>
+
+                <tr>
+                    <td><label for="photo">Upload your Photo</label></td>
+                    <td><input type="file" name="photo" accept="image/*"></td>
+                </tr>
+		
+		 <tr>
+		    <td> </td>
+                    <td><progress id="file" value="95" max="100">32%</progress>95%</td>
+                </tr>
+
+
+                <tr>
+		    <td> </td>
+                    <td><input type="submit" value="Submit" formaction="home.html"></td>
+                </tr>
+
+
+            </table>
+            <hr>
+
+        </form>
+
+
+    </body>
+
+
+</html>

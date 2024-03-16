@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html ng-app="inventoryApp">
+
+<head>
+  <title>Product Inventory System</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script>
+    angular.module('inventoryApp', []).controller('inventoryCtrl', function($scope) {
+      $scope.products = [];
+
+      $scope.addProduct = function() {
+        if ($scope.name && $scope.price) {
+          $scope.products.push({
+            name: $scope.name,
+            price: $scope.price
+          });
+          $scope.name = '';
+          $scope.price = '';
+        }
+      };
+
+      $scope.removeProduct = function(index) {
+        $scope.products.splice(index, 1);
+      };
+    });
+  </script>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    input[type="text"], input[type="number"] {
+      padding: 5px;
+      width: 200px;
+    }
+    button{
+        margin: 20px;
+        color: blue;
+    }
+  </style>
+</head>
+
+<body ng-controller="inventoryCtrl">
+  <h1>Product Inventory System</h1>
+
+  <form>
+    <label for="name">Name:</label>
+    <input type="text" id="name" ng-model="name" required>
+    <br>
+
+    <label for="price">Price:</label>
+    <input type="number" id="price" ng-model="price" required>
+    <br>
+
+    <button type="button" ng-click="addProduct()">Add Product</button>
+  </form>
+
+  <br>
+
+  <table style="color: plum;">
+    <tr style="color: plum;">
+      <th>Name</th>
+      <th>Price</th>
+      <th>Action</th>
+    </tr>
+    <tr ng-repeat="product in products">
+      <td>{{ product.name }}</td>
+      <td>{{ product.price }}</td>
+      <td><a href="#" ng-click="removeProduct($index)">Delete</a></td>
+    </tr>
+  </table>
+</body>
+
+</html>

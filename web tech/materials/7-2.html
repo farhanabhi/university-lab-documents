@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Style Manipulation and Effects with jQuery</title>
+  <style>
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: #3498db;
+      margin: 20px;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+
+<div id="box"></div>
+
+<button onclick="changeColor()">Change Color</button>
+<button onclick="increaseSize()">Increase Size</button>
+<button onclick="toggleBorder()">Toggle Border</button>
+
+<button onclick="showEffect()">Show</button>
+<button onclick="hideEffect()">Hide</button>
+<button onclick="toggleEffect()">Toggle</button>
+
+<button onclick="fadeInEffect()">Fade In</button>
+<button onclick="fadeOutEffect()">Fade Out</button>
+<button onclick="fadeToggleEffect()">Fade Toggle</button>
+
+<button onclick="slideUpEffect()">Slide Up</button>
+<button onclick="slideDownEffect()">Slide Down</button>
+<button onclick="slideToggleEffect()">Slide Toggle</button>
+
+<button onclick="animateEffect()">Animate</button>
+
+<script>
+  function changeColor() {
+    $('#box').css('background-color', getRandomColor());
+  }
+
+  function increaseSize() {
+    let newSize = $('#box').width() * 1.5;
+    $('#box').width(newSize).height(newSize);
+  }
+
+  function toggleBorder() {
+    $('#box').toggleClass('bordered');
+  }
+
+  function showEffect() {
+    $('#box').show();
+  }
+
+  function hideEffect() {
+    $('#box').hide();
+  }
+
+  function toggleEffect() {
+    $('#box').toggle();
+  }
+
+  function fadeInEffect() {
+    $('#box').fadeIn();
+  }
+
+  function fadeOutEffect() {
+    $('#box').fadeOut();
+  }
+
+  function fadeToggleEffect() {
+    $('#box').fadeToggle();
+  }
+
+  function slideUpEffect() {
+    $('#box').slideUp();
+  }
+
+  function slideDownEffect() {
+    $('#box').slideDown();
+  }
+
+  function slideToggleEffect() {
+    $('#box').slideToggle();
+  }
+
+  function animateEffect() {
+    $('#box').animate({ 
+      left: '+=50px',
+      opacity: 0.5,
+      height: 'toggle'
+    }, 1000);
+  }
+
+  // Function to generate a random color
+  function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Order</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="img">
+            <img src="pizza.jpg" alt="Pizza Image" height="200px"/>
+            <input type="checkbox" id="pizza" name="pizza" value="180" />
+            <label for="pizza">Rs.180</label><br><br>
+
+            <img src="vegpizza.jpg" alt="Veg Pizza Image" height="200px" >
+            <input type="checkbox" id="vegpizza" name="toppings" value="120" />
+            <label for="vegpizza">Rs.120</label><br><br>
+
+            <img src="burger.jpg" alt="Burger Image" height="200px" width="200px"/>
+            <input type="checkbox" id="burger" name="toppings" value="140" />
+            <label for="burger">Rs.140</label><br><br>
+        </div>
+
+        <div class="order-details">
+            <label for="email">Email</label><br>
+            <input type="email" id="email" required /><br><br>
+            <label for="phone">Phone</label><br>
+            <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"><br><br>
+            <label for="address">Address</label><br>
+            <textarea name="address" id="address" cols="30" rows="10"></textarea><br><br>
+            <label for="slices">Number of slices</label><br>
+            <input type="text" id="slices" name="slices" /><br><br>
+            <label for="size">Pizza Size</label><br>
+            <input type="radio" id="8inch" name="size" value="8-inch" checked />
+            <label for="8inch">8-inch</label>&nbsp;&nbsp;
+            <input type="radio" id="10inch" name="size" value="10-inch" />
+            <label for="10inch">10-inch</label>&nbsp;&nbsp;
+            <input type="radio" id="12inch" name="size" value="12-inch" />
+            <label for="12inch">12-inch</label>&nbsp;&nbsp;
+            <input type="radio" id="14inch" name="size" value="14-inch" />
+            <label for="14inch">14-inch</label>&nbsp;&nbsp;<br><br>
+            <label for="toppings">Toppings</label><br>
+            <input type="checkbox" id="pepperoni" name="toppings" value="Pepperoni" />
+            <label for="pepperoni">Pepperoni &nbsp;</label>
+            <input type="checkbox" id="onions" name="toppings" value="Onions" />
+            <label for="onions">Onions &nbsp;</label>
+            <input type="checkbox" id="mushrooms" name="toppings" value="Mushrooms" />
+            <label for="mushrooms">Mushrooms &nbsp;</label>
+            <input type="checkbox" id="sausage" name="toppings" value="Sausage" />
+            <label for="sausage">Sausage &nbsp;</label><br><br>
+            <input type="checkbox" id="terms" name="terms" required />I agree to the terms and conditions.<br><br>
+            <button onclick="order()">Order Now!</button>
+            <div id="bill"></div>
+        </div>
+    </div>
+
+    <script >
+        function order() {
+            let terms = document.getElementById("terms").checked;
+            if (!terms) {
+                alert("Please agree to the terms and conditions.");
+                return;
+            }
+        
+            let slices = parseInt(document.getElementById("slices").value);
+            let size = document.querySelector('input[name="size"]:checked').value;
+            let toppings = document.querySelectorAll('input[name="toppings"]:checked');
+            let taxRate = 0.09; 
+            let tipRate = Math.floor(Math.random() * (11) + 10) / 100; 
+        
+            let basePrice = 0;
+            switch (size) {
+                case "8-inch":
+                    basePrice = 180;
+                    break;
+                case "10-inch":
+                    basePrice = 200;
+                    break;
+                case "12-inch":
+                    basePrice = 220;
+                    break;
+                case "14-inch":
+                    basePrice = 240;
+                    break;
+                default:
+                    basePrice = 0;
+            }
+        
+            let toppingsCost = toppings.length * 0.1 * basePrice;
+        
+            let subtotal = (basePrice + toppingsCost) * slices;
+        
+            let tax = subtotal * taxRate;
+        
+            let totalCost = subtotal + tax;
+        
+            let tip = totalCost * tipRate;
+        
+            let grandTotal = totalCost + tip;
+        
+            let billDetails = "Subtotal: Rs. " + subtotal.toFixed(2) +
+                "<br>Tax: Rs. " + tax.toFixed(2) +
+                "<br>Tip: Rs. " + tip.toFixed(2) +
+                "<br>Grand Total = Rs. " + grandTotal.toFixed(2);
+        
+                document.getElementById("bill").innerHTML = billDetails;
+            }
+    </script>
+</body>
+
+</html>
